@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Red Teapot Dating</string>
+
+    <string name="match_profile">Click this button if you wish to Match</string>
+    <string name="analytics_user_matched">user_matched</string>
+    <string name="name">name</string>
+    <string name="photo">photo</string>
+    <string name="gender">gender</string>
+    <string name="gender_male_symbol">m</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_display">Gender</string>
+    <string name="gender_female">Female</string>
+    <string name="about">about</string>
+    <string name="about_display">About</string>
+    <string name="school">school</string>
+    <string name="school_display">School</string>
+    <string name="hobbies">hobbies</string>
+    <string name="hobbies_display">Hobbies</string>
+    <string name="analytics_button_type">button_type</string>
+    <string name="analytics_next">next</string>
+    <string name="analytics_profile">profile</string>
+    <string name="analytics_time_spent">time_spent</string>
+
 </resources>
