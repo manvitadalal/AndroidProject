@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1041705550023",
+    "project_id": "profile-order-experiment",
+    "storage_bucket": "profile-order-experiment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041705550023:android:878a70d5b107668f9efee2",
+        "android_client_info": {
+          "package_name": "com.redteapotdating.profileorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041705550023-0qedm8ah6mmduniom0vef025m6tid9cf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8Xbx7J14VxXQNGvo82_FylqXTxr-6y1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041705550023-0qedm8ah6mmduniom0vef025m6tid9cf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
