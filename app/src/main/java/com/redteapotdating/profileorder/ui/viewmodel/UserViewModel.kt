@@ -2,7 +2,6 @@ package com.redteapotdating.profileorder.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.redteapotdating.profileorder.repository.db.user.UserDatabase
 import com.redteapotdating.profileorder.repository.model.user.User
 import com.redteapotdating.profileorder.repository.repo.UserRepository
 import kotlinx.coroutines.CoroutineScope
@@ -12,8 +11,7 @@ import kotlinx.coroutines.withContext
 
 
 class UserViewModel(
-    private val userRepository: UserRepository,
-    private val userDatabase: UserDatabase
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
     val userList = MutableLiveData<List<User>>()
@@ -31,11 +29,11 @@ class UserViewModel(
             }
             if (userListResponse != null && userListResponse.isSuccessful) {
                 if (userListResponse.body()?.users?.size!! > 0) {
-                    userDatabase.userDao().insertUserList(userListResponse.body()!!.users)
+                    userRepository.insertUsersToDb(userListResponse.body()!!.users)
                 }
                 userList.postValue(userListResponse.body()!!.users)
             } else {
-                userList.postValue(userDatabase.userDao().getAllUsers())
+                userList.postValue(userRepository.getUsersFromDb())
             }
         }
     }

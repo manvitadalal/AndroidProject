@@ -27,11 +27,8 @@ class MainActivity : AppCompatActivity() {
     private val fragmentList = ArrayList<Fragment>()
     private var currentFragment: Int = 0
     private var openTimestamp: Long = 0
-
     private lateinit var nextButton: FloatingActionButton
-
     private lateinit var viewModel: UserViewModel
-
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +37,12 @@ class MainActivity : AppCompatActivity() {
 
         firebaseAnalytics = Firebase.analytics
 
+        // As a future enhancement, dependency injection should be used to create the UserRepository object
         val apiClient = ApiClient.getInstance()
         val apiInterface = apiClient.create(ApiInterface::class.java)
         val userDatabase = UserDatabase.getDatabase(this)
 
-        viewModel = UserViewModel(UserRepository(apiInterface), userDatabase)
+        viewModel = UserViewModel(UserRepository(apiInterface, userDatabase))
         initViews()
 
         nextButton.setOnClickListener {
@@ -58,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             if (currentFragment >= fragmentList.size) {
                 nextButton.visibility = View.GONE
             }
-            // Log how much time was spent looking at the current profile
+            // Logging time was spent looking at the current profile on firebase
             firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                 param(getString(R.string.analytics_button_type), getString(R.string.analytics_next))
                 param(FirebaseAnalytics.Param.ITEM_LIST_ID, currentFragment.toString())
@@ -92,6 +90,7 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
+    // This method populates the live data objects with data from the network or database (based on connectivity)
     private fun fetchData() {
         viewModel.userList.observe(this) {
             userList = it

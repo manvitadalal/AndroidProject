@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+// This uses Retrofit to perform network operations to "http://hinge-ue1-dev-cli-android-homework.s3-website-us-east-1.amazonaws.com/ "
 object ApiClient {
 
     fun getInstance(): Retrofit {
@@ -19,7 +19,7 @@ object ApiClient {
 
 
         return Retrofit.Builder()
-            .baseUrl("http://hinge-ue1-dev-cli-android-homework.s3-website-us-east-1.amazonaws.com/ ")
+            .baseUrl("http://hinge-ue1-dev-cli-android-homework.s3-website-us-east-1.amazonaws.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()
